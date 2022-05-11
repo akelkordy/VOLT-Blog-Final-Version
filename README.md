@@ -21,5 +21,16 @@ Most current translation models use word-level vocabularies. An issue with this 
 
 Sub-word vocabularies seem great, but the issue lies with the methods the use them. Here is an example of an analysis on piece of text done by BPE.
 
+![image1](./BPE-Analysis-Example.png)
 
-Current sub-word approaches tend to consider how often a word occurs in the text but do not consider how large the resulting token vocabulary is going to be. In other words, they consider frequency but not vocabulary size. This means that finding a proper vocabulary size requires trail training, which as discussed earlier, is extremely inefficient. VOLT attempts to fix this issue by considering both word frequency and resulting vocabulary size when attempting to formulate a token vocabulary for a piece of text. 
+BPE works by merging frequent character sequences to make sub-words for the token vocabulary. In the above image. A hyphen is placed in every position there is a possible merge of multiple characters into a sub-word. Nonetheless, our concern here is not how BPE works but the fact that its analysis focuses on how often a character sequence occurs and merges frequent character sequences together. However, BPE does not take into account any of the features of the resulting vocabulary.   
+
+In general, current sub-word approaches tend to consider how often a word occurs in the text but do not consider how large the resulting token vocabulary is going to be. In other words, they consider frequency but not vocabulary size. This means that finding a proper vocabulary size requires trail training, which as discussed earlier, is extremely inefficient. VOLT attempts to fix this issue by considering both word frequency and resulting vocabulary size when attempting to formulate a token vocabulary for a piece of text.  As we will see, formulating a method that considers both vocab size and frequency is quite difficult. In this next section, we will discuss how VOLT manages to achieve this. 
+
+## Techniques of VOLT
+
+There are two main reasons why coming up with a method that considers both frequency and size is difficult. Firstly, the relative frequency of our tokens tends to decrease as our vocabulary size increases which helps our model learn as we have less redundancy. However, having too large of a vocabulary size may cause the opposite problem where the tokens are too sparse which might result in a decrease in the model’s ability to learn. Secondly, the search space of all possible vocabulary sizes is exponential, and as we discussed earlier, we will not be using trail training. This means we must come up with a more efficient way to find the optimal size in exponentially many possible sizes.
+
+To attempt to optimize both entropy (frequency) and size, we come up with the idea of the Marginal Utility of Vocabularization (MUV). In economics, marginal utility is the amount of satisfaction a consumer attains from consuming a unit of a product. It is used to balance between the benefit and the cost, and so here we use the same concept to balance entropy and vocabulary size. Intuitively, we define MUV as the negative derivative of entropy with respect to size. The negative is placed there because as discussed earlier vocabulary size and entropy are roughly inversely proportional to one another, so as size increases, entropy decreases. Initial results show that the usage of MUV has a correlation with two-thirds of tasks performed. Let’s now take a look at a few figures to clarify the points being made here.
+
+
