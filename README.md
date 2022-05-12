@@ -46,7 +46,7 @@ For the second figure, experiments were conducted on 45 language pairs and the s
 
 The experiments shown here are conducted from one of the three following datasets. The WMT-14 English-German dataset which has 4.5 M English-German sentence pairs. The TED bilingual dataset where we chose 12 different language pairs that had the most training data. Lastly, the TED multilingual dataset where we chose 52 language pairs on a many-to English setting. 
 Here are some of the main advantages of VOLT:
-1.	Overall better performance than widely used vocabularies
+### 1.	Overall better performance than widely used vocabularies
 
 In a paper by Shuoyang Ding [INSERT CITE HERE], it was found that among the 42 papers accepted for the Conference of Machine Translation, the most common size was 30K-40K. Hence, we compare VOLT’s BLEU (performance) scores with a popular method such as Byte Pair Encoding with a 30K vocabulary size. Here are the results:
 
@@ -54,7 +54,7 @@ In a paper by Shuoyang Ding [INSERT CITE HERE], it was found that among the 42 p
 
 The first set of rows compares BPE-30K with VOLT on English to other language tasks, while the second set of rows compares BPE-30K with VOLT on other language to English tasks, and the last row of columns shows off the size difference in the vocabularies generated during these tasks. It is clear to see that VOLT outperforms BOE-30K in almost every task on every language and more importantly, produces vocabularies that are much smaller in size than BPE-30K generated vocabularies. 
 
-2.	Low Resource Consumption
+### 2. Low Resource Consumption
 
 To explore VOLT’s resource consumption in respect to other methods, we will first run BPE-1K , BPE-2K, BPE-3K, BPE-4K, BPE-5K, BPE-6K, BPE-7K, BPE-8K, BPE-9K, BPE-10K, BPE-20K, and BPE 30K and select the best performing vocabulary out of those produced by these runs. We will cause this method of running several BPE’s and selecting the best one BPE-Search. We will also define another method, which we will call MUV-Search. MUV-Search iterates through various vocabulary sizes and selects the one with highest MUV. Notice that while VOLT also uses MUV, it does not do trail training as it applies constraints on the possible vocabulary sizes and uses transport matrices to find the optimal vocabulary. We compare BPE-Search, MUV-Search, and VOLT and get the following results:
 
@@ -62,7 +62,7 @@ To explore VOLT’s resource consumption in respect to other methods, we will fi
 
 In the table above, GH and CH are GPU Hours and CPU Hours respectively. The results seem to indicate that the performance score of all 3 is extremely similar. However, MUV-Search produces a smaller vocabulary than BPE-Search and generates this vocabulary in 348.6 less computing hours. VOLT seems to be an even better option as it produces a vocabulary also smaller than BPE-Search and it does so 5 computing hours quicker than MUV-Search.
 
-3.	Versatile, better on a large array of languages
+### 3.	Versatile, better on a large array of languages
 
 To test how good VOLT is across as many languages as possible. We conduct experiments to compare VOLT to BPE-60K as that it the most popular size setting for multi-lingual translation tasks. Here are the results:
 
