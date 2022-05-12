@@ -9,7 +9,7 @@ Github: https://github.com/Jingjing-NLP/VOLT
 
 ## Introduction
 
-At its core, the paper aims to find a way to reduce resource consumption and computational times of machine translation algorithms. A key part of translating between one language and another is taking the text in the original language and breaking down into tokens to make the translation possible. Tokens are just key elements of the text, they can be words, characters, or even sub-words. A sub-word is just a part of a word. For instance, a sub-word for both the words "lower" and "lowly" could be "low". The set of tokens that get produced from a piece of text is called a token vocabulary. For example, a possible token vocabulary for the sentence "John kicked the soccer ball" would be {kicked, soccer, ball}. VOLT tries to optimize the creation of this token vocabulary by having a noticeable reduction in the size of the token vocabulary produced from a piece of text
+At its core, the paper aims to find a way to reduce resource consumption and computational times of machine translation algorithms. The method we will explore today could result in machine translation models running much faster on machines with much less computational power than what is required now. A key part of translating between one language and another is taking the text in the original language and breaking down into tokens to make the translation process much simpler as we a foundation of words to use in the translation. Tokens are just key elements of the text, they can be words, characters, or even sub-words. A sub-word is just a part of a word. For instance, a sub-word for both the words "lower" and "lowly" could be "low". The set of tokens that get produced from a piece of text is called a token vocabulary. For example, a possible token vocabulary for the sentence "John kicked the soccer ball" would be {kicked, soccer, ball}. VOLT tries to optimize the creation of this token vocabulary by having a noticeable reduction in the size of the token vocabulary produced from a piece of text
 
 VOLT has other advantages other than reducing the vocabulary size. Firstly, VOLT does not only reduce size but produces an overall better vocabulary than current methods. We will see performance metrics later that show this off. Secondly, VOLT works well on multilingual MT settings. This means that VOLT performs better on a more diverse range of languages than other methods such as Byte-Pair Encoding (BPE). Lastly, VOLT uses less resources and computational time than current prevailing methods. For instance, on English to German translation, VOLT uses 30 GPU hours while conventional methods such as BPE-Search take 384 GPU hours. This is because VOLT does not require trail training when it comes to computing the optimal vocabulary. Trail training just means having to iterate through all possible vocabulary sizes to find the best vocabulary at the best size, this methodology is extremely inefficient and so its use is avoided in VOLT. 
 
@@ -38,6 +38,41 @@ To attempt to optimize both entropy (frequency) and size, we come up with the id
 ![image3](./VOLT-MUVCorrelation-Example.png)
 
 Firstly, its helpful to understand that BLEU and Spearman score are just two performance metrics and not knowing the details of how they work does not affect one’s ability to understand these figures. In the first model, we have entropy on the y-axis and size on the x-axis. Notice the roughly inversely proportional relationship between them. The BLEU score is also graphed, and a star is placed at the vocabulary with highest MUV. Notice that the starred vocabulary is the one corresponding to the vocabulary with the highest BLEU score, meaning it is the best performing vocabulary. 
+
 For the second figure, experiments were conducted on 45 language pairs and the spearman score between MUV and BLEU were recorded for each pair. Spearman score here is just a correlation score where the higher the correlation between MUV and performance, the higher the spearman score. The figure shows the results with the spearman score on the x-axis and the number of generated vocabularies that correspond to a certain spearman score range on the y-axis. The results show that for two-thirds of the generated vocabularies there is a positive spearman score indicating a correlation between MUV and performance.
+
+
+## Effectiveness of VOLT
+
+The experiments shown here are conducted from one of the three following datasets. The WMT-14 English-German dataset which has 4.5 M English-German sentence pairs. The TED bilingual dataset where we chose 12 different language pairs that had the most training data. Lastly, the TED multilingual dataset where we chose 52 language pairs on a many-to English setting. 
+Here are some of the main advantages of VOLT:
+1.	Overall better performance than widely used vocabularies
+
+In a paper by Shuoyang Ding [INSERT CITE HERE], it was found that among the 42 papers accepted for the Conference of Machine Translation, the most common size was 30K-40K. Hence, we compare VOLT’s BLEU (performance) scores with a popular method such as Byte Pair Encoding with a 30K vocabulary size. Here are the results:
+
+![image4](./Experiment-1.png)
+
+The first set of rows compares BPE-30K with VOLT on English to other language tasks, while the second set of rows compares BPE-30K with VOLT on other language to English tasks, and the last row of columns shows off the size difference in the vocabularies generated during these tasks. It is clear to see that VOLT outperforms BOE-30K in almost every task on every language and more importantly, produces vocabularies that are much smaller in size than BPE-30K generated vocabularies. 
+
+2.	Low Resource Consumption
+
+To explore VOLT’s resource consumption in respect to other methods, we will first run BPE-1K , BPE-2K, BPE-3K, BPE-4K, BPE-5K, BPE-6K, BPE-7K, BPE-8K, BPE-9K, BPE-10K, BPE-20K, and BPE 30K and select the best performing vocabulary out of those produced by these runs. We will cause this method of running several BPE’s and selecting the best one BPE-Search. We will also define another method, which we will call MUV-Search. MUV-Search iterates through various vocabulary sizes and selects the one with highest MUV. Notice that while VOLT also uses MUV, it does not do trail training as it applies constraints on the possible vocabulary sizes and uses transport matrices to find the optimal vocabulary. We compare BPE-Search, MUV-Search, and VOLT and get the following results:
+
+![image5](./Experiment-2.png)
+
+In the table above, GH and CH are GPU Hours and CPU Hours respectively. The results seem to indicate that the performance score of all 3 is extremely similar. However, MUV-Search produces a smaller vocabulary than BPE-Search and generates this vocabulary in 348.6 less computing hours. VOLT seems to be an even better option as it produces a vocabulary also smaller than BPE-Search and it does so 5 computing hours quicker than MUV-Search.
+
+3.	Versatile, better on a large array of languages
+
+To test how good VOLT is across as many languages as possible. We conduct experiments to compare VOLT to BPE-60K as that it the most popular size setting for multi-lingual translation tasks. Here are the results:
+
+![image6](./Experiment-3.png)
+
+The table shows results for BPE-60K and VOLT on 52 different languages to English translation tasks. VOLT performs better than BPE-60K on 42 of those languages which shows how versatile VOLT is.
+
+
+
+
+
 
 
