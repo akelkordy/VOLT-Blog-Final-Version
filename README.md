@@ -4,6 +4,8 @@ author:  Ahmed Elkordy
 date: 2022 - 5 - 17
 tags:
  - Multilingual MT
+ - Vocabulary Learning
+ - Optimal Transport
 categories:
  - MT
 ---
