@@ -19,7 +19,7 @@ Github: https://github.com/Jingjing-NLP/VOLT
 
 At its core, the paper aims to find a way to reduce resource consumption and computational times of machine translation algorithms. The method we will explore today could result in machine translation models running much faster on machines with much less computational power than what is required now. A key part of translating between one language and another is taking the text in the original language and breaking it down into tokens to make the translation process much simpler by using the tokens as a foundation of words or characters to use in the translation. Tokens are just key elements of the text, they can be words, characters, or even sub-words. A sub-word is just a part of a word. For instance, a sub-word for both the words "lower" and "lowly" could be "low". The set of tokens that get produced from a piece of text is called a token vocabulary. Here is an example of a sentence and some possible token vocabulaies from that sentence. 
 
-![image7](./Vocab_Example.jpg)
+![image7](./Vocab_Example.png)
 
 VOLT tries to optimize the creation of this token vocabulary by having a noticeable reduction in the size of the token vocabulary produced from a piece of text.
 
