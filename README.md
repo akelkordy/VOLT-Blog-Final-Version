@@ -1,7 +1,7 @@
 ---
 title: Vocabulary Learning Via Optimal Transport --- VOLT 
-author:  Lei Li
-date: 2020-12-31
+author:  Ahmed Elkordy
+date: 2022 - 5 - 17
 tags:
  - Multilingual MT
 categories:
