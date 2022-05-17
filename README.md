@@ -72,7 +72,7 @@ The experiments shown here are conducted from one of the three following dataset
 Here are some of the main advantages of VOLT:
 ### 1.	Overall better performance than widely used vocabularies
 
-In a paper by Shuoyang Ding [2], it was found that among the 42 papers accepted for the Conference of Machine Translation, the most common size was 30K-40K. Hence, we compare VOLT’s BLEU (performance) scores with a popular method such as Byte Pair Encoding with a 30K vocabulary size. Here are the results:
+In a paper by Shuoyang Ding [2], it was found that among the 42 papers accepted for the Conference of Machine Translation(WMT), the most common size was 30K-40K. Hence, we compare VOLT’s BLEU (performance) scores with a popular method such as Byte Pair Encoding with a 30K vocabulary size. Here are the results:
 
 ![image4](./Performance_Example.png)
 
