@@ -82,7 +82,7 @@ In a paper by Shuoyang Ding [2], it was found that among the 42 papers accepted 
  <img src="ItEn_Example.PNG" style="width: 25vw;"/>
 </p>
 
-In this example of Russian to English translation, not only does VOLT produce a vocabulary that is almost 10x smaller than that of BPE-30K, but it also actually outperforms it as well in terms of BLEU score. Out of the 24 some language to English translation, VOLT outperformed BPE-30K on 23 of them. 
+In all of these examples, not only does VOLT produce a vocabulary that is almost 10x smaller than that of BPE-30K, but it also actually outperforms it as well in terms of BLEU score. Out of the 24 some language to English translation, VOLT outperformed BPE-30K on 23 of them. 
 
 ### 2. Low Resource Consumption
 
