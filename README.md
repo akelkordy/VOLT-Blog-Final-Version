@@ -75,11 +75,11 @@ Here are some of the main advantages of VOLT:
 In a paper by Shuoyang Ding [2], it was found that among the 42 papers accepted for the Conference of Machine Translation(WMT), the most common size was 30K-40K. Hence, we compare VOLT’s BLEU (performance) scores with a popular method such as Byte Pair Encoding with a 30K vocabulary size. Here are the results:
 
 <p align="center">
- <img src="RuEn_Example.png">
+ <img src="RuEn_Example.png" style="width: 50vw;"/>
 </p>
 <p align="center">
- <img src="ArEn_Example.PNG">
- <img src="ItEn_Example.PNG">
+ <img src="ArEn_Example.PNG" style="width: 50vw;"/>
+ <img src="ItEn_Example.PNG" style="width: 50vw;"/>
 </p>
 
 In this example of Russian to English translation, not only does VOLT produce a vocabulary that is almost 10x smaller than that of BPE-30K, but it also actually outperforms it as well in terms of BLEU score. Out of the 24 some language to English translation, VOLT outperformed BPE-30K on 23 of them. 
