@@ -97,7 +97,7 @@ In the figure above, GH and CH are GPU Hours and CPU Hours respectively. The res
 
 To test how good VOLT is across as many languages as possible. We conduct experiments to compare VOLT to BPE-60K as that it the most popular size setting for multi-lingual translation tasks. Here are the results:
 
-![image6](./Versatility_Example.png)
+![image6](./Versatility_Example.PNG)
 
 The figure shows results for BPE-60K and VOLT on 20 different languages to English translation tasks. VOLT performs better than BPE-60K on 18 of those languages which shows how versatile VOLT is.
 
