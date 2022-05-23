@@ -76,7 +76,7 @@ In a paper by Shuoyang Ding [2], it was found that among the 42 papers accepted 
 
 <p align="center">
  <img src="RuEn_Example.png" style="width: 25vw;"/>
- <img src="HeEn_Example.png" style="width: 25vw;"/>
+ <img src="HeEn_Example.PNG" style="width: 25vw;"/>
 </p>
 <p align="center">
  <img src="ArEn_Example.PNG" style="width: 25vw;"/>
