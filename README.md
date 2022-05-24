@@ -61,9 +61,9 @@ Our initial goal was to find the vocabulary with the highest BLEU score, this wa
 
 Initial results show that the usage of MUV has a correlation with two-thirds of tasks performed. Let’s now look at a few figures to clarify the points being made here.
 
-![image2](./VOLT-MUV-Example.png)
 
-![image3](./VOLT-MUVCorrelation-Example.png)
+<img src="VOLT-MUV-Example.png" style="width: 65vw;"/>
+<img src="VOLT-MUVCorrelation-Example.png" style="width: 60vw;"/>
 
 Firstly, it’s helpful to understand that BLEU and Spearman score are just two performance metrics and not knowing the details of how they work does not affect one’s ability to understand these figures. In the first model, we have entropy on the y-axis and size on the x-axis. Notice the roughly inversely proportional relationship between them. The BLEU score is also graphed, and a star is placed at the vocabulary with highest MUV. Notice that the starred vocabulary is the one corresponding to the vocabulary with the highest BLEU score, meaning it is the best performing vocabulary. 
 
