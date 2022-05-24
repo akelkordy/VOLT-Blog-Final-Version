@@ -39,7 +39,7 @@ Most current translation models use word-level vocabularies. As discussed above,
 
 Sub-word vocabularies seem great, but the issue lies with the methods the use them. Here is an example of an analysis on piece of text done by BPE.
 
-![image1](./BPE-Analysis-Example.png)
+![image1](./BPE-Example.png)
 
 BPE works by merging frequent character sequences to make sub-words for the token vocabulary. In the above image. A hyphen is placed in every position there is a possible merge of multiple characters into a sub-word. Nonetheless, our concern here is not how BPE works but the fact that its analysis focuses on how often a character sequence occurs and merges frequent character sequences together. However, BPE does not consider any of the features, namely size, of the resulting vocabulary.   
 
