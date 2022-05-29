@@ -49,11 +49,11 @@ The question here becomes, if the problem with BPE is size why not just run BPE 
 
 To attempt to optimize both entropy and size, we will use the idea of Marginal Utility. In economics, marginal utility is the amount of satisfaction a consumer attains from consuming a unit of a product. It is used to balance between the benefit and the cost. Let’s look at the following example to make things clear. A high school is buying laptops in bulk for its students, it needs to find the optimal amount and price to buy these laptops at. Here are some of its options
 
-![image9](./MUV_Example.png)
+![image9](./MU_Example.png)
 
 While it may seem like an easy choice for the school to just buy 400 laptops. 400 laptops might be too much, meaning laptops would go unused and the school would have wasted money. Hence, the optimal choice would be choosing 200 laptops which would fit the school’s needs at a good price. This is the concept of marginal utility. We apply this same concept in the paper by using vocabulary size as the cost and the value is the information per character, which as defined before is entropy. We define a new concept, the Marginal Utility of Vocabularization (MUV), which finds the best trade-off between size and entropy. For VOLT to find the optimal vocabulary, it needs to find the vocabulary with the highest MUV. 
 
-<img src="MUV_Example2.png" style="width: 100vw;"/>
+<img src="MU_Example2.png" style="width: 100vw;"/>
 
 Intuitively, the equation for MUV is the derivation of entropy with respect to size as we want to know how much we are sacrificing in terms of a larger vocabulary size with every drop in vocabulary entropy. Now that MUV is defined, we can view VOLT as an optimal transport problem. There have been algorithms developed to efficiently solve optimal transport problems such as the Sinkhorn algorithm which is used here to find the vocabulary with the highest MUV, which is the optimal vocabulary.
 
